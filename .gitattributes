@@ -1,0 +1,2 @@
+CICIDS/** filter=lfs diff=lfs merge=lfs -text
+KDD99/** filter=lfs diff=lfs merge=lfs -text
