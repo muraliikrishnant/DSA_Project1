@@ -1,0 +1,17 @@
+n,distribution,dataset_source,unique_ips,algo,runs,seconds_mean,seconds_std,peak_kb_mean,peak_kb_std,k
+10000,synthetic,synthetic:zipf unique=1000 alpha=1.2,745,count_hash,10,0.021417,0.000769,164.2,0.632,
+10000,synthetic,synthetic:zipf unique=1000 alpha=1.2,745,quicksort,10,0.006324,0.000429,3.0,0.0,
+10000,synthetic,synthetic:zipf unique=1000 alpha=1.2,745,mergesort,10,0.008392,0.00051,11.5,0.527,
+10000,synthetic,synthetic:zipf unique=1000 alpha=1.2,745,topk_heap,10,9.8e-05,1e-05,0.0,0.0,10
+100000,synthetic,synthetic:zipf unique=1000 alpha=1.2,1000,count_hash,10,0.14727,0.01355,164.0,0.0,
+100000,synthetic,synthetic:zipf unique=1000 alpha=1.2,1000,quicksort,10,0.009907,0.000812,3.0,0.0,
+100000,synthetic,synthetic:zipf unique=1000 alpha=1.2,1000,mergesort,10,0.013196,0.001826,16.0,0.0,
+100000,synthetic,synthetic:zipf unique=1000 alpha=1.2,1000,topk_heap,10,0.000117,7e-06,0.0,0.0,10
+1000000,synthetic,synthetic:zipf unique=1000 alpha=1.2,1000,count_hash,10,1.558821,0.253059,164.0,0.0,
+1000000,synthetic,synthetic:zipf unique=1000 alpha=1.2,1000,quicksort,10,0.009642,0.000696,3.0,0.0,
+1000000,synthetic,synthetic:zipf unique=1000 alpha=1.2,1000,mergesort,10,0.013128,0.001581,16.0,0.0,
+1000000,synthetic,synthetic:zipf unique=1000 alpha=1.2,1000,topk_heap,10,0.000157,0.000124,0.0,0.0,10
+10000000,synthetic,synthetic:zipf unique=1000 alpha=1.2,1000,count_hash,10,14.600575,0.605995,183.0,0.0,
+10000000,synthetic,synthetic:zipf unique=1000 alpha=1.2,1000,quicksort,10,0.011172,0.003518,3.0,0.0,
+10000000,synthetic,synthetic:zipf unique=1000 alpha=1.2,1000,mergesort,10,0.013505,0.005025,16.0,0.0,
+10000000,synthetic,synthetic:zipf unique=1000 alpha=1.2,1000,topk_heap,10,0.00013,1.8e-05,0.0,0.0,10
