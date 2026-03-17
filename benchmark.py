@@ -63,12 +63,16 @@ def bench_algorithms(args: argparse.Namespace) -> int:
         source: str
 
         if tag == "synthetic":
-            source = f"synthetic:{args.synthetic_mode} unique={args.synthetic_unique} alpha={args.zipf_alpha}"
+            unique_for_n = args.synthetic_unique
+            if args.synthetic_unique_scale:
+                unique_for_n = min(n, args.synthetic_unique_cap)
+
+            source = f"synthetic:{args.synthetic_mode} unique={unique_for_n} alpha={args.zipf_alpha}"
 
             def iter_keys(seed: int):
                 if args.synthetic_mode == "uniform":
-                    return generate_uniform_keys(n, num_ips=args.synthetic_unique, seed=seed)
-                return generate_zipf_keys(n, num_ips=args.synthetic_unique, alpha=args.zipf_alpha, seed=seed)
+                    return generate_uniform_keys(n, num_ips=unique_for_n, seed=seed)
+                return generate_zipf_keys(n, num_ips=unique_for_n, alpha=args.zipf_alpha, seed=seed)
 
         else:
             loaded = load_keys(
@@ -206,6 +210,11 @@ def bench_algorithms(args: argparse.Namespace) -> int:
         f.write(f"dataset_path={args.dataset_path}\n")
         f.write(f"cicids_column={args.cicids_column}\n")
         f.write(f"kdd99_field={args.kdd99_field}\n")
+        f.write(f"synthetic_mode={getattr(args, 'synthetic_mode', None)}\n")
+        f.write(f"synthetic_unique={getattr(args, 'synthetic_unique', None)}\n")
+        f.write(f"synthetic_unique_scale={getattr(args, 'synthetic_unique_scale', None)}\n")
+        f.write(f"synthetic_unique_cap={getattr(args, 'synthetic_unique_cap', None)}\n")
+        f.write(f"zipf_alpha={getattr(args, 'zipf_alpha', None)}\n")
         f.write(f"limits={args.limits}\n")
         f.write(f"runs={args.runs}\n")
         f.write(f"k={args.k}\n")
@@ -257,9 +266,13 @@ def parse_args() -> argparse.Namespace:
     pa.add_argument("--runs", type=int, default=3, help="Repeats per setting (PDF: 10)")
     pa.add_argument("--seed", type=int, default=0)
     pa.add_argument("--cicids-column", type=str, default="Destination Port", help="Key column for CICIDS CSVs (often no IP columns)")
+    pa.add_argument("--cicids_column", dest="cicids_column", type=str, help="Alias for --cicids-column")
     pa.add_argument("--kdd99-field", type=str, default="service", help="Key field for KDD99 (e.g. service, protocol_type, flag, label, or numeric index)")
+    pa.add_argument("--kdd99_field", dest="kdd99_field", type=str, help="Alias for --kdd99-field")
     pa.add_argument("--synthetic-mode", choices=["uniform", "zipf"], default="zipf", help="Synthetic distribution")
     pa.add_argument("--synthetic-unique", type=int, default=1000, help="Number of unique synthetic IPs")
+    pa.add_argument("--synthetic-unique-scale", action="store_true", help="Set unique count per n (min(n, --synthetic-unique-cap))")
+    pa.add_argument("--synthetic-unique-cap", type=int, default=1_000_000, help="Cap for --synthetic-unique-scale")
     pa.add_argument("--zipf-alpha", type=float, default=1.2, help="Zipf alpha (higher => more skew)")
     pa.add_argument("-k", type=int, default=10, help="Top-K size")
     pa.add_argument("--no-quicksort", dest="do_quicksort", action="store_false")
