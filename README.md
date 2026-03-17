@@ -36,6 +36,14 @@ python3 benchmark.py algos --dataset kdd99 --dataset-path KDD99/kddcup.data_10_p
 python3 benchmark.py bloom --m-bits 1000000 --k-hashes 7 --n-items 50000 --trials 100000
 ```
 
+## Plot results
+
+`benchmark.py` writes CSV files under `results/`. Convert a CSV into the four required charts (runtime/memory on linear + log-log axes):
+
+```bash
+python3 plot_results.py --csv results/benchmark_YYYYMMDD_HHMMSS.csv
+```
+
 ## Run tests
 
 ```bash
