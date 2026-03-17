@@ -113,16 +113,16 @@ def bench_algorithms(args: argparse.Namespace) -> int:
             if args.do_quicksort:
                 data = items.copy()
 
-                def do_qsort() -> None:
-                    quicksort_in_place(data, seed=args.seed + r)
+                def do_qsort(d=data, run=r) -> None:
+                    quicksort_in_place(d, seed=args.seed + run)
 
                 qsort_metrics.append(_measure(do_qsort))
 
             if args.do_mergesort:
                 data = items.copy()
 
-                def do_msort() -> None:
-                    _ = mergesort(data)
+                def do_msort(d=data) -> None:
+                    _ = mergesort(d)
 
                 msort_metrics.append(_measure(do_msort))
 

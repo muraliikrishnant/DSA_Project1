@@ -8,6 +8,9 @@ from collections.abc import Iterator
 def _make_ipv4_pool(rng: random.Random, num_ips: int) -> list[str]:
     if num_ips <= 0:
         raise ValueError("num_ips must be > 0")
+    # NOTE: This rejection-sampling loop is effectively guaranteed to terminate
+    # quickly for this project (e.g., num_ips ~ 1e3). It would get slow only if
+    # num_ips approached the IPv4 space size due to collisions.
     pool: list[str] = []
     seen: set[str] = set()
     while len(pool) < num_ips:
@@ -67,4 +70,3 @@ def generate_zipf_keys(
         r = rng.random()
         idx = bisect.bisect_left(cdf, r)
         yield pool[idx]
-
