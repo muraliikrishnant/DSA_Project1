@@ -1,0 +1,5 @@
+n,distribution,dataset_source,unique_ips,algo,runs,seconds_mean,seconds_std,peak_kb_mean,peak_kb_std,k
+1000,cicids,cicids:CICIDS column='Destination Port',78,count_hash,1,0.00015,0.0,2.0,0.0,
+1000,cicids,cicids:CICIDS column='Destination Port',78,quicksort,1,0.000196,0.0,3.0,0.0,
+1000,cicids,cicids:CICIDS column='Destination Port',78,mergesort,1,0.000146,0.0,1.0,0.0,
+1000,cicids,cicids:CICIDS column='Destination Port',78,topk_heap,1,5.3e-05,0.0,0.0,0.0,10

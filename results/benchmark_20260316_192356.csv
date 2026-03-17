@@ -1,0 +1,5 @@
+n,distribution,dataset_source,unique_ips,algo,runs,seconds_mean,seconds_std,peak_kb_mean,peak_kb_std,k
+2000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,count_hash,1,0.000518,0.0,0.0,0.0,
+2000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,quicksort,1,5.7e-05,0.0,2.0,0.0,
+2000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,mergesort,1,3.1e-05,0.0,0.0,0.0,
+2000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,topk_heap,1,3.4e-05,0.0,0.0,0.0,10
