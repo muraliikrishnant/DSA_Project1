@@ -8,6 +8,7 @@ This repo contains from-scratch implementations used in the pre-proposal:
 - Heap Top-K (`heap_topk.py`) — **O(n log K)**
 - Bloom filter (`bloom_filter.py`) — **O(1)** membership (probabilistic)
 - Dataset loader for CICIDS/KDD99 (`dataset_loader.py`)
+- Synthetic key generator (`data_generator.py`)
 - Benchmark harness (`benchmark.py`)
 
 ## Run benchmarks
@@ -28,6 +29,12 @@ Enable the **O(n²)** brute-force baseline (only runs when `n <= --bruteforce-ma
 
 ```bash
 python3 benchmark.py algos --dataset kdd99 --dataset-path KDD99/kddcup.data_10_percent/kddcup.data_10_percent --limits 2000 5000 10000 --do-bruteforce --verify
+```
+
+Synthetic (uniform or Zipf-like skew) at n ∈ {10⁴, 10⁵, 10⁶, 10⁷}:
+
+```bash
+python3 benchmark.py algos --dataset synthetic --limits 10000 100000 1000000 10000000 --synthetic-mode zipf --synthetic-unique 1000 --zipf-alpha 1.2 --runs 3 --verify
 ```
 
 ## Bloom filter experiment

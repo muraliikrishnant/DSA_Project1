@@ -1,6 +1,7 @@
 import unittest
 
 from bloom_filter import BloomFilter
+from data_generator import generate_uniform_keys, generate_zipf_keys
 from heap_topk import top_k
 from mergesort import mergesort
 from quicksort import quicksort_in_place
@@ -45,6 +46,17 @@ class TestBloom(unittest.TestCase):
             self.assertIn(s, bf)
 
 
+class TestSyntheticGenerator(unittest.TestCase):
+    def test_uniform_length_and_pool(self) -> None:
+        keys = list(generate_uniform_keys(100, num_ips=10, seed=1))
+        self.assertEqual(len(keys), 100)
+        self.assertLessEqual(len(set(keys)), 10)
+
+    def test_zipf_length_and_pool(self) -> None:
+        keys = list(generate_zipf_keys(200, num_ips=20, alpha=1.2, seed=2))
+        self.assertEqual(len(keys), 200)
+        self.assertLessEqual(len(set(keys)), 20)
+
+
 if __name__ == "__main__":
     unittest.main()
-

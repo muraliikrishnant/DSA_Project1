@@ -12,6 +12,7 @@ from datetime import datetime
 
 from bloom_filter import BloomFilter
 from bruteforce import rank_bruteforce
+from data_generator import generate_uniform_keys, generate_zipf_keys
 from dataset_loader import load_keys
 from hash_counter import count_frequencies
 from heap_topk import top_k
@@ -57,20 +58,35 @@ def bench_algorithms(args: argparse.Namespace) -> int:
 
     rows: list[dict[str, object]] = []
     for n in args.limits:
-        loaded = load_keys(
-            args.dataset,
-            args.dataset_path,
-            limit=n,
-            cicids_column=args.cicids_column,
-            kdd99_field=args.kdd99_field,
-        )
-
         tag = args.dataset.lower()
-        source = loaded.source
-        keys = loaded.keys
+        keys: list[str] | None = None
+        source: str
+
+        if tag == "synthetic":
+            source = f"synthetic:{args.synthetic_mode} unique={args.synthetic_unique} alpha={args.zipf_alpha}"
+
+            def iter_keys(seed: int):
+                if args.synthetic_mode == "uniform":
+                    return generate_uniform_keys(n, num_ips=args.synthetic_unique, seed=seed)
+                return generate_zipf_keys(n, num_ips=args.synthetic_unique, alpha=args.zipf_alpha, seed=seed)
+
+        else:
+            loaded = load_keys(
+                args.dataset,
+                args.dataset_path,
+                limit=n,
+                cicids_column=args.cicids_column,
+                kdd99_field=args.kdd99_field,
+            )
+            source = loaded.source
+            keys = loaded.keys
+            iter_keys = None  # type: ignore[assignment]
 
         if args.verbose:
-            print(f"Loaded {len(keys)} rows from {source}")
+            if keys is not None:
+                print(f"Loaded {len(keys)} rows from {source}")
+            else:
+                print(f"Configured synthetic generator for n={n}: {source}")
 
         count_metrics: list[RunMetric] = []
         qsort_metrics: list[RunMetric] = []
@@ -85,7 +101,10 @@ def bench_algorithms(args: argparse.Namespace) -> int:
 
             def do_count() -> None:
                 nonlocal counts
-                counts = count_frequencies(keys)
+                if keys is not None:
+                    counts = count_frequencies(keys)
+                else:
+                    counts = count_frequencies(iter_keys(args.seed + r))
 
             count_metrics.append(_measure(do_count))
             unique_last = len(counts)
@@ -114,7 +133,10 @@ def bench_algorithms(args: argparse.Namespace) -> int:
                 topk_metrics.append(_measure(do_topk))
 
             if args.do_bruteforce and n <= args.bruteforce_max_n:
-                logs = keys
+                if keys is not None:
+                    logs = keys
+                else:
+                    logs = list(iter_keys(args.seed + r))
 
                 def do_brute() -> None:
                     _ = rank_bruteforce(logs)
@@ -223,14 +245,22 @@ def parse_args() -> argparse.Namespace:
     sub = p.add_subparsers(dest="cmd", required=True)
 
     pa = sub.add_parser("algos", help="Benchmark counting/sorting/top-k")
-    pa.add_argument("--dataset", choices=["cicids", "kdd99"], required=True)
-    pa.add_argument("--dataset-path", type=str, required=True, help="For cicids: directory of .csv files. For kdd99: path to data file (supports .gz).")
+    pa.add_argument("--dataset", choices=["cicids", "kdd99", "synthetic"], required=True)
+    pa.add_argument(
+        "--dataset-path",
+        type=str,
+        default=None,
+        help="For cicids: directory of .csv files. For kdd99: path to data file (supports .gz). Not used for synthetic.",
+    )
     pa.add_argument("--limits", nargs="+", type=int, default=[10_000, 100_000, 1_000_000], help="Prefix lengths to load from the dataset")
     pa.add_argument("--sizes", nargs="+", type=int, help="Alias for --limits")
     pa.add_argument("--runs", type=int, default=3, help="Repeats per setting (PDF: 10)")
     pa.add_argument("--seed", type=int, default=0)
     pa.add_argument("--cicids-column", type=str, default="Destination Port", help="Key column for CICIDS CSVs (often no IP columns)")
     pa.add_argument("--kdd99-field", type=str, default="service", help="Key field for KDD99 (e.g. service, protocol_type, flag, label, or numeric index)")
+    pa.add_argument("--synthetic-mode", choices=["uniform", "zipf"], default="zipf", help="Synthetic distribution")
+    pa.add_argument("--synthetic-unique", type=int, default=1000, help="Number of unique synthetic IPs")
+    pa.add_argument("--zipf-alpha", type=float, default=1.2, help="Zipf alpha (higher => more skew)")
     pa.add_argument("-k", type=int, default=10, help="Top-K size")
     pa.add_argument("--no-quicksort", dest="do_quicksort", action="store_false")
     pa.add_argument("--no-mergesort", dest="do_mergesort", action="store_false")
@@ -259,6 +289,9 @@ def main() -> int:
     if getattr(args, "sizes", None):
         # Backward-compatible alias
         args.limits = args.sizes
+    if args.cmd == "algos":
+        if args.dataset != "synthetic" and not args.dataset_path:
+            raise SystemExit("--dataset-path is required for cicids/kdd99")
     return int(args.func(args))
 
 

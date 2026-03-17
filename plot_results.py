@@ -111,8 +111,10 @@ def _plot(
     overlay("O(n^2) reference", theory["O(n^2)"], anchor_algo="bruteforce")
 
     plt.title(out_path.stem.replace("_", " ").title())
-    plt.xlabel(x_field)
-    plt.ylabel(y_field)
+    x_labels = {"n": "Number of Log Entries (n)", "unique_keys": "Number of Unique Keys"}
+    y_labels = {"seconds_mean": "Runtime (seconds)", "peak_kb_mean": "Peak Memory (KB)"}
+    plt.xlabel(x_labels.get(x_field, x_field))
+    plt.ylabel(y_labels.get(y_field, y_field))
     plt.grid(True, which="both", linestyle=":", linewidth=0.8)
     if loglog:
         plt.xscale("log")
