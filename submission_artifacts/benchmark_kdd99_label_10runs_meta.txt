@@ -1,0 +1,16 @@
+python=3.12.6
+platform=macOS-26.3.1-arm64-arm-64bit
+cpu=arm
+timestamp=2026-04-22T14:10:58.660949
+dataset=kdd99
+dataset_path=KDD99/kddcup.data.corrected
+cicids_column=Destination Port
+kdd99_field=label
+synthetic_mode=zipf
+synthetic_unique=1000
+synthetic_unique_scale=False
+synthetic_unique_cap=1000000
+zipf_alpha=1.2
+limits=[10000, 100000]
+runs=10
+k=10
