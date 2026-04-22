@@ -1,0 +1,21 @@
+n,distribution,dataset_source,unique_ips,algo,runs,seconds_mean,seconds_std,peak_kb_mean,peak_kb_std,k
+1000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',10,count_hash,10,0.000167,7e-06,0.0,0.0,
+1000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',10,quicksort,10,2.9e-05,7e-06,2.0,0.0,
+1000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',10,mergesort,10,1.9e-05,3e-06,0.0,0.0,
+1000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',10,topk_heap,10,2.3e-05,2e-06,0.0,0.0,10
+1000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',10,bruteforce,10,0.000306,5e-06,0.0,0.0,
+2000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,count_hash,10,0.000413,6e-06,0.0,0.0,
+2000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,quicksort,10,2.7e-05,3e-06,2.0,0.0,
+2000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,mergesort,10,2e-05,1e-06,0.0,0.0,
+2000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,topk_heap,10,2.3e-05,1e-06,0.0,0.0,10
+2000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,bruteforce,10,0.000716,5e-06,0.0,0.0,
+5000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,count_hash,10,0.001139,2.2e-05,0.0,0.0,
+5000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,quicksort,10,3.1e-05,4e-06,2.0,0.0,
+5000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,mergesort,10,2e-05,1e-06,0.0,0.0,
+5000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,topk_heap,10,2.3e-05,2e-06,0.0,0.0,10
+5000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,bruteforce,10,0.001872,4.4e-05,0.0,0.0,
+10000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,count_hash,10,0.00236,4.4e-05,0.0,0.0,
+10000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,quicksort,10,3e-05,4e-06,2.0,0.0,
+10000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,mergesort,10,2.1e-05,2e-06,0.0,0.0,
+10000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,topk_heap,10,2.3e-05,2e-06,0.0,0.0,10
+10000,kdd99,kdd99:KDD99/kddcup.data_10_percent/kddcup.data_10_percent field='service',11,bruteforce,10,0.004042,4.9e-05,0.0,0.0,

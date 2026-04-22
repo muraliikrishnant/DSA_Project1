@@ -1,0 +1,17 @@
+n,distribution,dataset_source,unique_ips,algo,runs,seconds_mean,seconds_std,peak_kb_mean,peak_kb_std,k
+10000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,count_hash,10,0.018263,0.000288,102.0,0.0,
+10000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,quicksort,10,0.008883,0.000583,3.0,0.0,
+10000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,mergesort,10,0.011512,0.000264,16.0,0.0,
+10000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,topk_heap,10,0.00012,8e-06,0.0,0.0,10
+100000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,count_hash,10,0.125953,0.001311,102.0,0.0,
+100000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,quicksort,10,0.009078,0.000887,3.0,0.0,
+100000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,mergesort,10,0.0114,0.000149,16.0,0.0,
+100000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,topk_heap,10,0.000122,7e-06,0.0,0.0,10
+1000000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,count_hash,10,1.430139,0.075006,121.0,0.0,
+1000000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,quicksort,10,0.009032,0.000574,3.0,0.0,
+1000000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,mergesort,10,0.011392,8.3e-05,16.0,0.0,
+1000000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,topk_heap,10,0.000134,1.2e-05,0.0,0.0,10
+10000000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,count_hash,10,15.433397,2.030557,121.0,0.0,
+10000000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,quicksort,10,0.00906,0.000724,3.0,0.0,
+10000000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,mergesort,10,0.011747,0.00124,16.0,0.0,
+10000000,synthetic,synthetic:uniform unique=1000 alpha=1.2,1000,topk_heap,10,0.00031,0.000341,0.0,0.0,10
