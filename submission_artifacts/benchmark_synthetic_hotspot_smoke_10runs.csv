@@ -1,0 +1,9 @@
+n,distribution,dataset_source,unique_ips,algo,runs,seconds_mean,seconds_std,peak_kb_mean,peak_kb_std,k
+10000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,881,count_hash,10,0.024131,0.00453,110.0,0.0,
+10000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,881,quicksort,10,0.009556,0.003304,3.0,0.0,
+10000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,881,mergesort,10,0.012907,0.004708,14.0,0.0,
+10000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,881,topk_heap,10,0.000122,3.1e-05,0.0,0.0,10
+100000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,count_hash,10,0.171152,0.008387,110.0,0.0,
+100000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,quicksort,10,0.009824,0.000473,3.0,0.0,
+100000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,mergesort,10,0.012279,0.000272,16.0,0.0,
+100000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,topk_heap,10,0.000128,3.4e-05,0.0,0.0,10

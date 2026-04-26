@@ -8,11 +8,12 @@ This documentation covers the tools used to measure algorithm performance and ge
     - Uses `argparse` for a sub-command-based CLI (`algos` and `bloom`).
     - `_measure`: A wrapper function that uses `time.perf_counter()` for precision and `tracemalloc` to track peak memory usage.
     - `bench_algorithms`: Orchestrates the testing of counting, sorting, and Top-K algorithms across multiple runs and data sizes.
+    - Synthetic modes include `uniform`, `zipf`, and `hotspot` (explicit 5%-hot/80%-traffic profile for proposal alignment).
     - `bench_bloom`: Measures the empirical False Positive Rate (FPR) of the Bloom Filter by inserting *n* items and testing for membership of *trials* non-existent items.
 - **Key Functions**:
     - `main()`: Entry point that parses arguments and dispatches to sub-benchmarks.
     - `emit()`: Aggregates timing and memory statistics (mean, std dev) for each algorithm and appends them to a result list.
-- **Result**: A CSV file in the `results/` folder and a `_meta.txt` file containing system environment details.
+- **Result**: A CSV file in the `results/` folder and a `_meta.txt` file containing system environment details (including exact Python version used for that run).
 
 ## 2. Result Plotting (`plot_results.py`)
 - **What it is**: A script to turn benchmark CSVs into visualizations.

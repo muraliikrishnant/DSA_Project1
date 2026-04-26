@@ -11,30 +11,30 @@ This repo contains from-scratch implementations used in the pre-proposal:
 - Synthetic key generator (`data_generator.py`)
 - Benchmark harness (`benchmark.py`)
 
-## Run benchmarks
+## Run benchmarks (proposal-aligned defaults)
 
 Benchmark counting + ranking algorithms (writes a CSV under `results/`).
 
 ```bash
-python3 benchmark.py algos --dataset cicids --dataset-path CICIDS --limits 10000 100000 --cicids-column "Destination Port" --runs 3 --verify
+python3 benchmark.py algos --dataset cicids --dataset-path CICIDS --limits 10000 100000 --cicids-column "Destination Port" --runs 10 --verify
 ```
 
 KDD99 (default key field: `service`):
 
 ```bash
-python3 benchmark.py algos --dataset kdd99 --dataset-path KDD99/kddcup.data.corrected --limits 10000 100000 --kdd99-field service --runs 3 --verify
+python3 benchmark.py algos --dataset kdd99 --dataset-path KDD99/kddcup.data.corrected --limits 10000 100000 --kdd99-field label --runs 10 --verify
 ```
 
 Enable the **O(n²)** brute-force baseline (only runs when `n <= --bruteforce-max-n`):
 
 ```bash
-python3 benchmark.py algos --dataset kdd99 --dataset-path KDD99/kddcup.data_10_percent/kddcup.data_10_percent --limits 2000 5000 10000 --do-bruteforce --verify
+python3 benchmark.py algos --dataset synthetic --limits 1000 2000 5000 10000 --synthetic-mode hotspot --synthetic-unique 1000 --hot-fraction 0.05 --hot-traffic-share 0.8 --do-bruteforce --runs 10 --verify
 ```
 
-Synthetic (uniform or Zipf-like skew) at n ∈ {10⁴, 10⁵, 10⁶, 10⁷}:
+Synthetic at n ∈ {10⁴, 10⁵, 10⁶, 10⁷}:
 
 ```bash
-python3 benchmark.py algos --dataset synthetic --limits 10000 100000 1000000 10000000 --synthetic-mode zipf --synthetic-unique 1000 --zipf-alpha 1.2 --runs 3 --verify
+python3 benchmark.py algos --dataset synthetic --limits 10000 100000 1000000 10000000 --synthetic-mode hotspot --synthetic-unique 1000 --synthetic-unique-scale --hot-fraction 0.05 --hot-traffic-share 0.8 --runs 10 --verify
 ```
 
 ## Bloom filter experiment
@@ -59,5 +59,10 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 
 ## Notes / Limitations
 
-- The CICIDS CSVs in this folder appear to omit IP columns; benchmark by choosing a different key column (default: `Destination Port`).
-- The benchmark defaults to `--runs 3` for practicality; the proposal specifies **10**.
+- **Official submission artifacts are `*_10runs*` only.**
+- The benchmark default is now `--runs 10` to match proposal methodology.
+- CICIDS files in this repo do not include stable source/destination IP fields, so the CICIDS benchmark key is `Destination Port`. This is intentional and documented in metadata.
+- Synthetic skew supports:
+  - `--synthetic-mode hotspot` for explicit **5% of keys -> 80% of traffic**.
+  - `--synthetic-mode zipf` for heavy-tailed Zipf-like skew (supplementary).
+- Proposal text mentions Python 3.11; experiments were executed in a compatible Python 3.12 environment and each run records exact interpreter version in `*_meta.txt`.

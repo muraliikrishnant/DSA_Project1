@@ -1,9 +1,0 @@
-n,distribution,dataset_source,unique_ips,algo,runs,seconds_mean,seconds_std,peak_kb_mean,peak_kb_std,k
-10000,kdd99,kdd99:KDD99/kddcup.data_10_percent_corrected field='label',6,count_hash,5,0.003405,0.00072,0.0,0.0,
-10000,kdd99,kdd99:KDD99/kddcup.data_10_percent_corrected field='label',6,quicksort,5,6.6e-05,3e-05,2.0,0.0,
-10000,kdd99,kdd99:KDD99/kddcup.data_10_percent_corrected field='label',6,mergesort,5,2.7e-05,1.4e-05,0.0,0.0,
-10000,kdd99,kdd99:KDD99/kddcup.data_10_percent_corrected field='label',6,topk_heap,5,2.4e-05,3e-06,0.0,0.0,10
-100000,kdd99,kdd99:KDD99/kddcup.data_10_percent_corrected field='label',20,count_hash,5,0.033176,0.001137,0.0,0.0,
-100000,kdd99,kdd99:KDD99/kddcup.data_10_percent_corrected field='label',20,quicksort,5,9.6e-05,4.3e-05,2.0,0.0,
-100000,kdd99,kdd99:KDD99/kddcup.data_10_percent_corrected field='label',20,mergesort,5,5.7e-05,1.4e-05,0.0,0.0,
-100000,kdd99,kdd99:KDD99/kddcup.data_10_percent_corrected field='label',20,topk_heap,5,5.6e-05,3.3e-05,0.0,0.0,10

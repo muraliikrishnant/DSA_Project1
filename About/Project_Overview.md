@@ -10,7 +10,7 @@ The project is divided into several functional areas:
 2.  **Sorting & Ranking**: Ordering the unique keys by their frequency to identify the top offenders (Heavy Hiters).
 3.  **Top-K Selection**: Efficiently finding only the top *K* most frequent items without sorting the entire list.
 4.  **Membership Testing**: Using probabilistic data structures (Bloom Filters) to quickly check if a key has been seen before.
-5.  **Data Loading & Generation**: Loading real-world datasets (CICIDS, KDD99) or generating synthetic data with specific distributions (Uniform, Zipf).
+5.  **Data Loading & Generation**: Loading real-world datasets (CICIDS, KDD99) or generating synthetic data with specific distributions (Uniform, Zipf, and explicit 5%->80% hotspot skew).
 6.  **Benchmarking & Visualization**: A harness to measure the performance (time and memory) of these algorithms and scripts to plot the results.
 
 ## Algorithms Implemented
@@ -28,3 +28,8 @@ The project is divided into several functional areas:
 - `tests/`: Unit tests for ensuring algorithm correctness.
 - `benchmark.py`: The main entry point for running experiments.
 - `plot_results.py`: Script to generate charts from benchmark data.
+
+## Proposal-Alignment Notes
+- The official reproducibility artifacts use **10 runs per experiment** (`submission_artifacts/*_10runs*`).
+- For CICIDS, the benchmark key is `Destination Port` because the provided CSVs do not expose stable IP columns.
+- The synthetic attack simulation can be run in explicit 5%-hot/80%-traffic mode via `--synthetic-mode hotspot --hot-fraction 0.05 --hot-traffic-share 0.8`.
