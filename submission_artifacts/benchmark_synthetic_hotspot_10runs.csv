@@ -1,0 +1,17 @@
+n,distribution,dataset_source,unique_ips,algo,runs,seconds_mean,seconds_std,peak_kb_mean,peak_kb_std,k
+10000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,881,count_hash,10,0.021377,0.000446,110.0,0.0,
+10000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,881,quicksort,10,0.008082,0.00033,3.0,0.0,
+10000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,881,mergesort,10,0.010356,0.000157,14.0,0.0,
+10000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,881,topk_heap,10,0.000106,1.1e-05,0.0,0.0,10
+100000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,count_hash,10,0.166002,0.001211,110.0,0.0,
+100000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,quicksort,10,0.009693,0.000466,3.0,0.0,
+100000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,mergesort,10,0.012104,0.000138,16.0,0.0,
+100000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,topk_heap,10,0.000111,5e-06,0.0,0.0,10
+1000000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,count_hash,10,1.838118,0.219097,110.0,0.0,
+1000000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,quicksort,10,0.010533,0.001506,3.0,0.0,
+1000000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,mergesort,10,0.017486,0.015534,16.0,0.0,
+1000000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,topk_heap,10,0.003507,0.010074,0.0,0.0,10
+10000000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,count_hash,10,18.973149,2.066906,129.0,0.0,
+10000000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,quicksort,10,0.011982,0.00565,3.0,0.0,
+10000000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,mergesort,10,0.014636,0.004438,16.0,0.0,
+10000000,synthetic,synthetic:hotspot unique=1000 hot_fraction=0.05 hot_traffic_share=0.8,1000,topk_heap,10,0.000774,0.001514,0.0,0.0,10

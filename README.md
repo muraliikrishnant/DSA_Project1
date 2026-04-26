@@ -34,7 +34,7 @@ python3 benchmark.py algos --dataset synthetic --limits 1000 2000 5000 10000 --s
 Synthetic at n ∈ {10⁴, 10⁵, 10⁶, 10⁷}:
 
 ```bash
-python3 benchmark.py algos --dataset synthetic --limits 10000 100000 1000000 10000000 --synthetic-mode hotspot --synthetic-unique 1000 --synthetic-unique-scale --hot-fraction 0.05 --hot-traffic-share 0.8 --runs 10 --verify
+python3 benchmark.py algos --dataset synthetic --limits 10000 100000 1000000 10000000 --synthetic-mode hotspot --synthetic-unique 1000 --hot-fraction 0.05 --hot-traffic-share 0.8 --runs 10 --verify
 ```
 
 ## Bloom filter experiment

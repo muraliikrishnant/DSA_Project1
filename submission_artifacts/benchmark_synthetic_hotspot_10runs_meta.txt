@@ -1,7 +1,7 @@
 python=3.12.6
 platform=macOS-26.3.1-arm64-arm-64bit
 cpu=arm
-timestamp=2026-04-25T22:59:47.940863
+timestamp=2026-04-25T23:13:37.752102
 dataset=synthetic
 dataset_path=None
 cicids_column=Destination Port
@@ -13,6 +13,6 @@ synthetic_unique_cap=1000000
 zipf_alpha=1.2
 hot_fraction=0.05
 hot_traffic_share=0.8
-limits=[10000, 100000]
+limits=[10000, 100000, 1000000, 10000000]
 runs=10
 k=10
